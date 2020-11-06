@@ -1,4 +1,4 @@
-# Amazon Personalize / MovieLens - bare metal inference
+# Amazon Personalize / MovieLens - evaluating inference
 
 ## What
 
@@ -6,9 +6,9 @@ This project includes some basic utility scripts written in python that make it 
 
 ## Why
 
-The Amazon Personalize [sample notebooks](https://github.com/aws-samples/amazon-personalize-samples/tree/master/next_steps/workshops/POC_in_a_box) already do a great job of walking you through preparing and uploading the MovieLens dataset into Personalize and then training models, creating campaigns, and testing inference use-cases. The notebooks absolutely provide the best end-to-end experience. However, if you want to probe the Personalize campaigns created from the MovieLens dataset for focused and streamlined demos, these scripts may fit the bill. 
+The Amazon Personalize [sample notebooks](https://github.com/aws-samples/amazon-personalize-samples/tree/master/next_steps/workshops/POC_in_a_box) already do a great job of walking you through preparing and uploading the MovieLens dataset into Personalize and then training models, creating campaigns, and testing inference use-cases. The notebooks absolutely provide the best end-to-end experience. However, if you want to probe the Personalize campaigns created in the sample notebooks a little deeper to, say, evaluate the recommendations against historical interactions, these scripts may prove to be helpful. 
 
-Since the Amazon Personalize console and raw API responses only include movie/item IDs, interpreting those responses against actual movie titles and user histories is painful. Hence, these bare metal scripts were developed.
+Since the Amazon Personalize console and raw API responses only include movie/item IDs, interpreting those responses against actual movie titles and user histories is painful. Hence, these scripts were developed.
 
 ## How
 
@@ -55,11 +55,11 @@ The [movielens-ranking-demo](./movielens-ranking-demo.py) script will test the [
 
 ### Batch Recommendations
 
-The [movielens-create-batch-input-demo](./movielens-create-batch-input-demo.py) script will generate an input file for an Amazon Personalize [batch recommendations](https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html) inference job and upload it to an S3 bucket.
+The [movielens-create-batch-input-demo](./movielens-create-batch-input-demo.py) script will generate an input file for an Amazon Personalize [batch recommendations](https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html) inference job and upload it to an S3 bucket (optional).
 
 - Specify the job type you want to create an input file for on the command line (`user-personalization`, `similar-items`, or `personalized-ranking`).
 - Based on the job type, the appropriately formatted input file will be built based on a randomly selected user, item, or items (reranking).
-- The generated input file will be uploaded to the S3 bucket that you specify.
+- The generated input file will be uploaded to the S3 bucket if a bucket name is provided on the command line.
 
 You can then setup your batch inference job to run from the AWS console or via the [CreateBatchInferenceJob](https://docs.aws.amazon.com/personalize/latest/dg/API_CreateBatchInferenceJob.html) API.
 
