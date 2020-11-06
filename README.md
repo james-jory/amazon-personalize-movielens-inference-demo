@@ -67,13 +67,13 @@ The [movielens-create-batch-input-demo](./movielens-create-batch-input-demo.py) 
 - Based on the job type, the appropriately formatted input file will be built based on a randomly selected user, item, or items (reranking).
 - The generated input file will be uploaded to the S3 bucket if a bucket name is provided on the command line.
 
-You can then setup your batch inference job to run from the AWS console or via the [CreateBatchInferenceJob](https://docs.aws.amazon.com/personalize/latest/dg/API_CreateBatchInferenceJob.html) API.
+Once your input file(s) are created and uploaded to S3, you can then submit batch inference jobs for each file from the AWS console or via the [CreateBatchInferenceJob](https://docs.aws.amazon.com/personalize/latest/dg/API_CreateBatchInferenceJob.html) API. Be sure to setup the proper bucket policy and IAM role as described in the [documentation](https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html).
 
 Sample input/output files:
 
-- User-Personalization: [input file](./samples/batch-input-user-personalization-20201105-161225.json) | [output file](./samples/batch-output-user-personalization-20201105-161225.json)
-- Similar items: [input file](./samples/batch-input-similar-items-20201106-042152.json)
-- Personalized ranking: [input file](./samples/batch-input-personalized-ranking-20201106-033506.json) | [output file](./samples/batch-output-personalized-ranking-20201106-033506.json)
+- User personalization: [input file](./samples/batch-input-user-personalization-20201105-161225.json) | [output file](./samples/batch-output-user-personalization-20201105-161225.json)
+- Similar items: [input file](./samples/batch-input-similar-items-20201106-042152.json) | [output file](./samples/batch-output-similar-items-20201106-042152.json)
+- Personalized ranking: [input file](./samples/batch-input-personalized-ranking-20201106-044648.json) | [output file](./samples/batch-output-personalized-ranking-20201106-044648.json)
 
 ## License Summary
 
