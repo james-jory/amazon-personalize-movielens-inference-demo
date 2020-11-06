@@ -62,7 +62,8 @@ def create_personalized_ranking_input_file(num_records_to_generate, num_items_pe
 def usage_and_exit(code = None, message = None):
     if message:
         print(message)
-    print(f'Usage: {sys.argv[0]} -j job-type -b bucket-name [-r region]')
+    print(f'Usage: {sys.argv[0]} -j job-type [-b bucket-name] [-r region]')
+    print(f'\twhere job-type is one of {JOB_TYPES}')
     sys.exit(code)
 
 if __name__=="__main__":
@@ -94,9 +95,6 @@ if __name__=="__main__":
     elif job_type not in JOB_TYPES:
         usage_and_exit(1, f'job-type is invalid; must be one of {JOB_TYPES}')
 
-    if not bucket_name:
-        usage_and_exit(1, 'bucket_name is required')
-
     load_movies()
     load_interactions()
 
@@ -114,8 +112,9 @@ if __name__=="__main__":
 
     upload_filename = f'input/{input_filename}'
 
-    print()
-    print(f'Uploading input file {input_filename} to s3://{bucket_name}/{upload_filename}')
+    if bucket_name:
+        print()
+        print(f'Uploading input file {input_filename} to s3://{bucket_name}/{upload_filename}')
 
-    s3_client = boto3.client(service_name = 's3', region_name = region)
-    response = s3_client.upload_file(input_filename, bucket_name, upload_filename)
+        s3_client = boto3.client(service_name = 's3', region_name = region)
+        response = s3_client.upload_file(input_filename, bucket_name, upload_filename)
