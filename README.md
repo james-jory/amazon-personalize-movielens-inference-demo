@@ -34,6 +34,8 @@ The [movielens-user-personalization-demo](./movielens-user-personalization-demo.
 - Displays recommended movie titles and scores from the user-personalization campaign.
 - Displays side-by-side comparison of the user's top genres from their interaction history with the genres from the recommended movies.
 
+See [sample output](./samples/user-personalization-demo-output.txt) for an example of the script's output.
+
 ### Similar Items
 
 The [movielens-similar-items-demo](./movielens-similar-items-demo.py) script will test the [SIMS](https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-sims.html) backed campain.
@@ -41,6 +43,8 @@ The [movielens-similar-items-demo](./movielens-similar-items-demo.py) script wil
 - Pass an `item-id` on the command line or let the script randomly select a movie to use as the target for similar item recommendations.
 - Displays the movie title and genre(s) for the selected movie.
 - Displays the similar item recommendations results so you can evaluate them against the target movie.
+
+See [sample output](./samples/similar-items-demo-output.txt) for an example of the script's output.
 
 ### Personalized Ranking
 
@@ -53,6 +57,8 @@ The [movielens-ranking-demo](./movielens-ranking-demo.py) script will test the [
 - Displays the movies reranked by Personalize for the user.
 - Displays a side-by-side comparison of the unranked and reranked movies.
 
+See [sample output](./samples/ranking-demo-output.txt) for an example of the script's output.
+
 ### Batch Recommendations
 
 The [movielens-create-batch-input-demo](./movielens-create-batch-input-demo.py) script will generate an input file for an Amazon Personalize [batch recommendations](https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html) inference job and upload it to an S3 bucket (optional).
@@ -62,6 +68,12 @@ The [movielens-create-batch-input-demo](./movielens-create-batch-input-demo.py) 
 - The generated input file will be uploaded to the S3 bucket if a bucket name is provided on the command line.
 
 You can then setup your batch inference job to run from the AWS console or via the [CreateBatchInferenceJob](https://docs.aws.amazon.com/personalize/latest/dg/API_CreateBatchInferenceJob.html) API.
+
+Sample input/output files:
+
+- User-Personalization: [input file](./samples/batch-input-user-personalization-20201105-161225.json) | [output file](./samples/batch-output-user-personalization-20201105-161225.json)
+- Similar items: [input file](./samples/batch-input-similar-items-20201106-042152.json)
+- Personalized ranking: [input file](./samples/batch-input-personalized-ranking-20201106-033506.json) | [output file](./samples/batch-output-personalized-ranking-20201106-033506.json)
 
 ## License Summary
 
